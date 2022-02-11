@@ -17,3 +17,41 @@ buildscript {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+file('local.properties').with { file ->
+    ext.getPropLocalFirst = { String name ->
+        if (rootProject.ext.has('localProps') && localProps.containsKey(name)) {
+            return localProps.get(name)
+        }
+        return getProperty(name)
+    }
+    if (!file.exists()) {
+        return
+    }
+    file.withInputStream { input ->
+        ext.localProps = new Properties().with(true) {
+            it.load(input)
+            it.getProperties()
+        }
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven {
+            name 'maven-snapshot'
+            url 'https://s01.oss.sonatype.org/content/repositories/snapshots/'
+        }
+        mavenLocal()
+    }
+}
+
+subprojects {
+    project.afterEvaluate {
+        dependencies {
+            implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+        }
+    }
+}
