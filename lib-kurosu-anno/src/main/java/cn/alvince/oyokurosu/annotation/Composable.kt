@@ -5,6 +5,6 @@ package cn.alvince.oyokurosu.annotation
  *
  * @author alvince.zy@gmail.com
  */
-annotation class Composable() {
-
-}
+annotation class Composable(
+    val name: String
+)

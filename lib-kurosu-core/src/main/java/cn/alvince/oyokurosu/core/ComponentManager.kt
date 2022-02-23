@@ -1,12 +1,8 @@
 package cn.alvince.oyokurosu.core
 
 import android.app.Activity
-import android.content.Context
 import androidx.annotation.RestrictTo
-import androidx.collection.ArrayMap
-import androidx.core.view.KeyEventDispatcher.Component
 import androidx.fragment.app.Fragment
-import cn.alvince.zanpakuto.lifecycle.doOnDestroy
 
 /**
  * Created by alvince on 2022/1/17

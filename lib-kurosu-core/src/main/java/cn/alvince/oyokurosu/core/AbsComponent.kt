@@ -1,4 +1,4 @@
-package cn.alvince.oyokurosu
+package cn.alvince.oyokurosu.core
 
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleRegistry
